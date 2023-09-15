@@ -3,8 +3,8 @@ import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
-// import About from './components/About';
-// import { Routes, Route } from "react-router-dom"
+import About from './components/About';
+import { Routes, Route } from "react-router-dom"
 
 function App() {
   const [Mode, setMode] = useState('light'); //Whether dark mode is unable or not
@@ -27,7 +27,7 @@ function App() {
       setMode('dark');
       setbtnClass('text-light');
       setBtnText('Disable Dark Mode');
-      document.body.style.backgroundColor = "black";
+      document.body.style.backgroundColor = "#042743";
       showAlert("Dark Mode has been enabled", "success");
     }
     else
@@ -45,13 +45,12 @@ function App() {
     <Navbar title="TextUtils" mode={Mode} toggleMode={toggleMode} btnText={btnText} btnClass={btnClass} />
     <Alert alertMessage={alert} />
     <div className="container my-3">
-    <TextForm heading="Enter the text to analyze below" showAlert={showAlert} mode={Mode} toggleMode={toggleMode} btnClass={btnClass}/>
-      {/* <Routes> */}
-        {/* <Route exact path="/" element={}> */}
-        {/* </Route> */}
-        {/* <Route exact path="about" element={<About />}> */}
-        {/* </Route>
-      </Routes>       */}
+      <Routes>
+        <Route exact path="/" element={<TextForm heading="Enter the text to analyze below" showAlert={showAlert} mode={Mode} toggleMode={toggleMode} btnClass={btnClass}/>}>
+        </Route>
+        <Route exact path="about" element={<About mode={Mode} />}>
+        </Route>
+      </Routes>      
     </div>
 
     </>

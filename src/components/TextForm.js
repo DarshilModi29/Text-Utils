@@ -27,7 +27,7 @@ export default function TextForm(props) {
         </div>
         <div className={`container mt-3 ${props.btnClass} p-3`}>
             <h2>Your text summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
+            <p>{text.split(" ").filter((e)=>{return e.length!==0}).length} words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").length} Minutes to read</p>
             <h3>Preview</h3>
             <p>{text.length > 0 ? text : "Enter Something in the above textbox to preview it"}</p>
